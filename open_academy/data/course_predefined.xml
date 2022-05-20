@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="course_beginner" model="open_academy.course">
+        <field name="title">Beginner</field>
+        <field name="description">Beginner course</field>
+    </record>
+
+    <record id="course_middle" model="open_academy.course">
+        <field name="title">Middle</field>
+        <field name="description">Middle course</field>
+    </record>
+
+    <record id="course_advanced" model="open_academy.course">
+        <field name="title">Advanced</field>
+        <field name="description">Advanced course</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="session_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+
+                        <!-- Header -->
+                        <div name="session_header">
+                            <h1 t-field="o.name"/>
+                        </div>
+
+                        <hr/>
+
+                        <!-- Common Data -->
+                        <div name="session_start_date">
+                            <span>
+                                <strong>Start:</strong>
+                                <span t-field="o.start_date"/>
+                            </span>
+                        </div>
+                        <div name="session_finish_date">
+                            <span>
+                                <strong>Finish:</strong>
+                                <span t-field="o.finish_date"/>
+                            </span>
+                        </div>
+
+                        <!-- Attendees -->
+                        <t t-if="o.attendee_ids">
+                            <br/>
+
+                            <div>
+                                <strong>Attendees</strong>
+                            </div>
+
+                            <table class="table table-sm o_main_table" name="session_attendees">
+                                <thread>
+                                    <tr t-att-class="'bg-400 font-weight-bold o_line_section'">
+                                        <th name="th_name">
+                                            <span>№</span>
+                                        </th>
+                                        <th name="th_name">
+                                            <span>Name</span>
+                                        </th>
+                                        <th name="th_phone">
+                                            <span>Phone</span>
+                                        </th>
+                                        <th name="th_email">
+                                            <span>E-Mail</span>
+                                        </th>
+                                    </tr>
+                                </thread>
+
+                                <t t-set="lines_counter" t-value="0"/>
+                                <t t-set="lines" t-value="o.attendee_ids"/>
+
+                                <tr t-foreach="lines" t-as="line">
+                                    <t t-set="lines_counter" t-value="lines_counter + 1"/>
+                                    <tr>
+                                        <td>
+                                            <t t-esc="lines_counter"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.phone"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.email"/>
+                                        </td>
+                                    </tr>
+                                </tr>
+                                <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+                                    <td colspan="3"><span>Total attendees</span></td>
+                                    <td><span class="float-right text-right"><t t-esc="lines_counter"/></span></td>
+                                </tr>
+                            </table>
+                        </t>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Partner/Views/Form -->
+    <record id="open_academy.view_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Default Method-->
+            <page name="internal_notes" position="after">
+                <page string="Open Academy">
+                    <group>
+                        <field name="isinstructor"/>
+                        <field name="session_ids"/>
+                    </group>
+                </page>
+            </page>
+
+            <!-- XPATH Method-->
+            <!--
+            <xpath expr="//page[@name='internal_notes']" position="after">
+                <page string="Open Academy">
+                    <group>
+                        <field name="isinstructor"/>
+                        <field name="session_ids"/>
+                    </group>
+                </page>
+            </xpath>
+            -->
+
+        </field>
+    </record>
+
+</odoo>

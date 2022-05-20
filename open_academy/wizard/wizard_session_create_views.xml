@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Wizard/Views/Form -->
+    <record id="open_academy.view_session_create_wizard_form" model="ir.ui.view">
+        <field name="name">open_academy.create_session.wizard.form</field>
+        <field name="model">open_academy.create_session.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create New Session">
+                <group>
+                    <field name="session_id"/>
+                    <field name="attendee_ids"/>
+                </group>
+                <footer>
+                    <button name="action_subscribe_session" string="Subscribe Session" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Window actions -->
+    <record id="open_academy.action_create_session_wizard" model="ir.actions.act_window">
+        <field name="name">Create Session Wizard</field>
+        <field name="res_model">open_academy.create_session.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="open_academy.view_session_create_wizard_form"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_open_academy_session"/>
+    </record>
+
+</odoo>

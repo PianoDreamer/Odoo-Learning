@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Window actions -->
+    <record id="open_academy.action_partner" model="ir.actions.act_window">
+        <field name="name">Partners</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="open_academy.action_partner_category" model="ir.actions.act_window">
+        <field name="name">Partner Categories</field>
+        <field name="res_model">res.partner.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu items -->
+    <menuitem id="open_academy.menu_common"
+              name="Common"
+              parent="open_academy.menu_root"
+              sequence="3"/>
+
+    <menuitem id="open_academy.menu_partner"
+              name="Partners"
+              parent="open_academy.menu_common"
+              sequence="0"
+              action="open_academy.action_partner"/>
+
+    <menuitem id="open_academy.menu_partner_category"
+              name="Partner Categories"
+              parent="open_academy.menu_common"
+              sequence="1"
+              action="open_academy.action_partner_category"/>
+
+</odoo>

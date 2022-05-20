@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Window actions -->
+    <record id="open_academy.action_session_graph" model="ir.actions.act_window">
+        <field name="name">Session Graph</field>
+        <field name="res_model">open_academy.session</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="open_academy.view_session_graph"/>
+    </record>
+
+    <record id="open_academy.action_session_calendar" model="ir.actions.act_window">
+        <field name="name">Session Calendar</field>
+        <field name="res_model">open_academy.session</field>
+        <field name="view_mode">calendar</field>
+        <field name="view_id" ref="open_academy.view_session_calendar"/>
+    </record>
+
+    <!-- Dashboard/Views/Form -->
+    <record id="open_academy.dashboard_form" model="ir.ui.view">
+        <field name="name">open_academy.dashboard.form</field>
+        <field name="model">board.board</field>
+        <field name="arch" type="xml">
+            <form string="Open Academy Dashboard">
+                <board style="1-2">
+                    <column>
+                        <action string="Session Graph" name="%(open_academy.action_session_graph)d"/>
+                        <action string="Courses" name="%(open_academy.action_course_list)d"/>
+                    </column>
+                    <column>
+                        <action string="" name="%(open_academy.action_session_calendar)d"/>
+                    </column>
+                </board>
+            </form>
+        </field>
+    </record>
+
+    <!-- Window actions -->
+    <record id="open_academy.action_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">board.board</field>
+        <field name="view_mode">form</field>
+        <field name="usage">menu</field>
+        <field name="view_id" ref="open_academy.dashboard_form"/>
+    </record>
+
+    <!-- Menu items -->
+    <menuitem id="open_academy.menu_dashboard"
+              name="Dashboard"
+              parent="open_academy.menu_root"
+              sequence="0"
+              action="open_academy.action_dashboard"/>
+
+</odoo>
